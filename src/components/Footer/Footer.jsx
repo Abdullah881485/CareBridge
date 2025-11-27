@@ -7,7 +7,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">BikeMart</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">
+            Bike<span className="text-[#3863da]">Mart</span>{" "}
+          </h2>
+
           <p className="text-gray-600 leading-relaxed">
             Your trusted marketplace for premium bikes. Explore, compare, and
             buy with confidence.

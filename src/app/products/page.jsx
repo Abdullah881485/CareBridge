@@ -43,9 +43,13 @@ export default function Page() {
 
   return (
     <div className="py-10 w-8/10 mx-auto">
-      <h1 className="text-2xl text-center font-semibold my-5">
-        All Bikes Collection
-      </h1>
+      <div className="flex flex-col gap-2 justify-center my-5 text-center">
+        <h1 className="text-2xl  font-semibold">All Bikes Collection</h1>
+        <p className="text-gray-500">
+          Discover our full collection of bikes, designed for speed, comfort,
+          and everyday performance.
+        </p>
+      </div>
 
       <div className="flex items-center justify-between flex-col md:flex-row gap-4">
         <label className="input flex items-center gap-2 w-full md:w-auto">

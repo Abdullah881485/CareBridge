@@ -6,6 +6,7 @@ import { use, useState } from "react";
 import Loader from "../Loader/Loader";
 import Swal from "sweetalert2";
 import Drop from "../Drop/Drop";
+import LogOutBtn from "../Logout/LogoutBtn";
 
 export default function Navbar() {
   const { user, logOut } = useAuth();
