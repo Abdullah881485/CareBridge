@@ -1,14 +1,12 @@
 "use client";
 import ListCard from "@/components/ListCard/ListCard";
 import Loader from "@/components/Loader/Loader";
-import useAuth from "@/Hooks/useAuth";
-import { useRouter } from "next/navigation";
+
 import { useEffect, useState } from "react";
 export default function page() {
   const [loading, setLoading] = useState(false);
   const [bikes, setBikes] = useState([]);
-  const router = useRouter();
-  const { user } = useAuth();
+
   useEffect(() => {
     setLoading(true);
     fetch("https://bikemart-server.vercel.app/products")
@@ -35,21 +33,17 @@ export default function page() {
         {" "}
         Manage Bikes{" "}
       </h1>{" "}
-      {user?.email ? (
-        <div className="flex flex-col gap-5 w-8/10 mx-auto">
-          {" "}
-          {bikes.map((bike) => (
-            <ListCard
-              key={bike._id}
-              bike={bike}
-              bikes={bikes}
-              setBikes={setBikes}
-            ></ListCard>
-          ))}{" "}
-        </div>
-      ) : (
-        router.push("/login")
-      )}{" "}
+      <div className="flex flex-col gap-5 w-8/10 mx-auto">
+        {" "}
+        {bikes.map((bike) => (
+          <ListCard
+            key={bike._id}
+            bike={bike}
+            bikes={bikes}
+            setBikes={setBikes}
+          ></ListCard>
+        ))}{" "}
+      </div>
     </div>
   );
 }

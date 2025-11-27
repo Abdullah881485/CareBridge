@@ -32,6 +32,8 @@ export default function Reviews() {
       <div className="flex flex-wrap justify-center gap-8">
         {reviews.map((review) => (
           <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
             key={review.id}
             className="bg-white p-6 rounded-xl shadow-md max-w-sm text-left hover:-translate-y-1 transition-transform"
           >

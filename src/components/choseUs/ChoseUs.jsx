@@ -28,6 +28,8 @@ export default function WhyChooseUs() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
         {features.map((f, i) => (
           <div
+            data-aos="fade-up"
+            data-aos-anchor-placement="center-bottom"
             key={i}
             className="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition"
           >

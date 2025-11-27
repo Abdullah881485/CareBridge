@@ -35,8 +35,11 @@ export default function ListCard({ bike, bikes, setBikes }) {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-col md:flex-row justify-between items-start hover:shadow-lg transition gap-4 w-full">
-      {/* Left: Image + Details */}
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+      className="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-col md:flex-row justify-between items-start hover:shadow-lg transition gap-4 w-full"
+    >
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center w-full md:w-2/3">
         <img
           src={bike.image}
@@ -53,7 +56,6 @@ export default function ListCard({ bike, bikes, setBikes }) {
         </div>
       </div>
 
-      {/* Right: Price + Actions */}
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 md:gap-6 items-start sm:items-center w-full sm:w-auto">
         <span className="font-bold text-blue-500 text-base sm:text-lg md:text-xl">
           ${bike.price}

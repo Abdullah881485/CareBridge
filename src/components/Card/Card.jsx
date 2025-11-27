@@ -2,7 +2,11 @@ import Link from "next/link";
 
 export default function Card({ bike }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition p-4 flex flex-col">
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+      className="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition p-4 flex flex-col"
+    >
       <div className="w-full h-50 bg-gray-100 rounded-lg mb-4 overflow-hidden">
         <img
           src={bike.image}
