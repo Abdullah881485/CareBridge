@@ -71,7 +71,9 @@ export default function Navbar() {
               {links}
             </ul>
           </div>
-          <a className=" font-bold text-xl md:text-2xl">BikeMart</a>
+          <a className=" font-bold text-xl md:text-2xl">
+            Bike<span className="text-[#3863da]">Mart</span>{" "}
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-semibold">{links}</ul>
@@ -116,7 +118,7 @@ export default function Navbar() {
               <div>
                 <Link
                   href="/register"
-                  className="btn btn-sm md:btn-md bg-[#1D4ED8] hover:bg-[#5175d8] border-0 text-white"
+                  className="btn btn-sm md:btn-md bg-[#3863da] hover:bg-[#5175d8] border-0 text-white"
                 >
                   Sign Up
                 </Link>
