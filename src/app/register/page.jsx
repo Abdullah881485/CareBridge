@@ -2,6 +2,7 @@
 
 import Loader from "@/components/Loader/Loader";
 import useAuth from "@/Hooks/useAuth";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -20,8 +21,8 @@ export default function page() {
     const password = form.password.value;
     createUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const _user = result.user;
+        // console.log(user);
         Swal.fire({
           title: "",
           text: "You Registered Successfully",
@@ -40,8 +41,8 @@ export default function page() {
     setLoading(true);
     signInWithGoogle()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const _user = result.user;
+        // console.log(user);
         Swal.fire({
           title: "",
           text: "You registered Successfully",
@@ -61,7 +62,7 @@ export default function page() {
   }
   return (
     <div className="flex justify-center my-20">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
+      <div className="card bg-base-100 w-9/10 max-w-sm shrink-0 shadow-2xl py-5">
         <h1 className="text-center py-2 text-2xl font-semibold">
           Register to BikeMart
         </h1>
@@ -126,6 +127,13 @@ export default function page() {
               </svg>
               Register with Google
             </button>
+
+            <p className="mt-4 text-center text-sm font-semibold">
+              Already have an account?{" "}
+              <Link className="text-[#1D4ED8] hover:underline" href="/login">
+                Login
+              </Link>
+            </p>
           </form>
         </div>
       </div>

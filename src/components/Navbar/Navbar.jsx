@@ -108,7 +108,7 @@ export default function Navbar() {
               <div>
                 <Link
                   href="/login"
-                  className="btn bg-white hover:shadow-md hover:text-blue-900"
+                  className="btn btn-sm md:btn-md bg-white hover:shadow-md hover:text-blue-900"
                 >
                   Login
                 </Link>
@@ -116,7 +116,7 @@ export default function Navbar() {
               <div>
                 <Link
                   href="/register"
-                  className="btn bg-[#1D4ED8] hover:bg-[#5175d8] border-0 text-white"
+                  className="btn btn-sm md:btn-md bg-[#1D4ED8] hover:bg-[#5175d8] border-0 text-white"
                 >
                   Sign Up
                 </Link>
