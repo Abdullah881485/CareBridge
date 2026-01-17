@@ -40,7 +40,7 @@ export default function FAQ() {
   return (
     <section data-aos="fade-up" className="py-16 bg-white">
       <div className="w-9/10 md:w-8/10 mx-auto px-4">
-        {/* Header */}
+   
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
             Frequently Asked <span className="text-blue-600">Question</span>
@@ -50,7 +50,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        {/* FAQ Items */}
+      
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div

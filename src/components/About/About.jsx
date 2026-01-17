@@ -2,7 +2,7 @@ export default function AboutUs() {
   return (
     <section data-aos="fade-up" className="my-20 w-9/10 md:w-8/10 mx-auto">
       <div className="flex flex-col md:flex-row items-center gap-10 bg-white rounded-2xl shadow-lg overflow-hidden">
-        {/* Image */}
+    
         <div className="w-full md:w-1/2 h-[260px] md:h-[380px] overflow-hidden">
           <img
             src="https://i.ibb.co.com/39Ny7gXN/motorbike-is-being-driven-quickly-28914-32822.jpg"
@@ -11,7 +11,7 @@ export default function AboutUs() {
           />
         </div>
 
-        {/* Content */}
+       
         <div className="w-full md:w-1/2 p-6 md:p-10 space-y-4">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             About <span className="text-blue-600">BikeMart</span>

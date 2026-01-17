@@ -6,10 +6,10 @@ import "./Banner.css";
 export default function Banner() {
   return (
     <section className="banner relative w-full min-h-[70vh] flex items-center">
-      {/* Black overlay mask */}
+      
       <div className="absolute inset-0 bg-black/60"></div>
 
-      {/* Content */}
+     
       <div className="relative z-10 w-9/10 md:w-8/10 mx-auto text-center md:text-left space-y-6">
         <h1
           data-aos="fade-up"

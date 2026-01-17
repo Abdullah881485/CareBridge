@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.1)] text-gray-700 pt-14 pb-8 px-6">
       <div className="w-9/10 md:w-8/10 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand */}
+     
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
             Bike<span className="text-[#3863da]">Mart</span>{" "}
@@ -17,7 +17,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Services */}
+       
         <div>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Services</h3>
           <ul className="space-y-2">
@@ -36,7 +36,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Company */}
         <div>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Company</h3>
           <ul className="space-y-2">
@@ -55,7 +54,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Social Icons */}
         <div>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
             Follow Us
@@ -86,7 +84,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Copyright */}
+     
       <div className="mt-10 pt-6 text-center text-gray-500 border-t border-gray-200">
         © {new Date().getFullYear()} BikeMart. All rights reserved.
       </div>

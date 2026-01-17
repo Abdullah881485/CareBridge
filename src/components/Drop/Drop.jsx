@@ -8,7 +8,7 @@ export default function MobileMenu() {
 
   return (
     <div className="md:hidden relative">
-      {/* Hamburger Button */}
+    
       <button
         onClick={() => setOpen(!open)}
         className="flex flex-col justify-center items-center w-10 h-10 rounded-lg shadow-sm"
@@ -31,7 +31,7 @@ export default function MobileMenu() {
         />
       </button>
 
-      {/* Dropdown Menu */}
+      
       {open && (
         <div
           data-aos="fade-down"

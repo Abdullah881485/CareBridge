@@ -2,7 +2,7 @@ export default function Achievements() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="w-9/10 md:w-8/10 mx-auto">
-        {/* Header */}
+        
         <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Our <span className="text-blue-600">Achievements</span>
@@ -12,9 +12,9 @@ export default function Achievements() {
           </p>
         </div>
 
-        {/* Stats */}
+     
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
+          
           <div
             data-aos="zoom-in"
             data-aos-delay="0"
@@ -29,7 +29,7 @@ export default function Achievements() {
             </p>
           </div>
 
-          {/* Card 2 */}
+        
           <div
             data-aos="zoom-in"
             data-aos-delay="150"
@@ -44,7 +44,7 @@ export default function Achievements() {
             </p>
           </div>
 
-          {/* Card 3 */}
+       
           <div
             data-aos="zoom-in"
             data-aos-delay="300"

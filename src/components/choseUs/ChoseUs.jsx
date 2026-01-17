@@ -25,7 +25,7 @@ export default function WhyChooseUs() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="w-9/10 md:w-8/10 mx-auto text-center">
-        {/* Section Header */}
+        
         <h2
           data-aos="fade-up"
           className="text-3xl md:text-4xl font-bold text-gray-900"
@@ -42,7 +42,7 @@ export default function WhyChooseUs() {
           the best biking experience possible.
         </p>
 
-        {/* Cards */}
+      
         <div className="grid gap-8 mt-12 md:grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
             <div

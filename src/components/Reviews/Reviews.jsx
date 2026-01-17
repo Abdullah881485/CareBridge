@@ -27,7 +27,6 @@ export default function Reviews() {
   return (
     <section className="py-20 bg-white">
       <div className="w-9/10 md:w-8/10 mx-auto">
-        {/* Header */}
         <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             What Our <span className="text-blue-600">Clients Say</span>
@@ -37,7 +36,6 @@ export default function Reviews() {
           </p>
         </div>
 
-        {/* Reviews */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review, index) => (
             <div
