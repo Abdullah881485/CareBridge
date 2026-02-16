@@ -5,19 +5,17 @@ export default function Footer() {
   return (
     <footer className="bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.1)] text-gray-700 pt-14 pb-8 px-6">
       <div className="w-9/10 md:w-8/10 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-     
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
-            Bike<span className="text-[#3863da]">Mart</span>{" "}
+            Care<span className="text-[#3863da]">Bridge</span>{" "}
           </h2>
 
           <p className="text-gray-600 leading-relaxed">
-            Your trusted marketplace for premium bikes. Explore, compare, and
-            buy with confidence.
+            Your trusted marketplace for premium care services. Explore,
+            compare, and book with confidence.
           </p>
         </div>
 
-       
         <div>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Services</h3>
           <ul className="space-y-2">
@@ -84,9 +82,8 @@ export default function Footer() {
         </div>
       </div>
 
-     
       <div className="mt-10 pt-6 text-center text-gray-500 border-t border-gray-200">
-        © {new Date().getFullYear()} BikeMart. All rights reserved.
+        © {new Date().getFullYear()} CareBridge. All rights reserved.
       </div>
     </footer>
   );

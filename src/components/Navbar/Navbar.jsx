@@ -17,16 +17,12 @@ export default function Navbar() {
       <li className="px-2">
         <Link href="/">Home</Link>
       </li>
+      {user?.email && (
+        <li className="px-2">
+          <Link href="/manageProducts">My Bookings</Link>
+        </li>
+      )}
 
-      <li className="px-2">
-        <Link href="/products">All Products</Link>
-      </li>
-      <li className="px-2">
-        <Link href="/manageProducts">Manage Products</Link>
-      </li>
-      <li className="px-2">
-        <Link href="/addProducts">Add Products</Link>
-      </li>
       <li className="px-2">
         <Link href="/contact">Contacts Us</Link>
       </li>
@@ -73,7 +69,7 @@ export default function Navbar() {
             </ul>
           </div>
           <a className=" font-extrabold text-xl md:text-3xl">
-            Bike<span className="text-[#3863da]">Mart</span>{" "}
+            Care<span className="text-[#3863da]">Bridge</span>{" "}
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

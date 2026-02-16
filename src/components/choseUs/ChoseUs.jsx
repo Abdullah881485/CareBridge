@@ -1,36 +1,35 @@
 const features = [
   {
-    title: "Premium Quality Bikes",
-    desc: "We offer only carefully selected bikes from trusted and proven brands.",
-    icon: "🚴‍♂️",
+    title: "Verified & Trusted Caregivers",
+    desc: "All caregivers are carefully screened and background-verified to ensure safety and reliability.",
+    icon: "🛡️",
   },
   {
-    title: "Best Value Pricing",
-    desc: "Transparent and competitive prices without compromising on quality.",
-    icon: "💰",
+    title: "Flexible & Easy Booking",
+    desc: "Book care services based on your preferred time, duration, and location with just a few clicks.",
+    icon: "📅",
   },
   {
-    title: "Fast & Secure Delivery",
-    desc: "Your bike arrives safely and on time, right at your doorstep.",
-    icon: "🚚",
+    title: "Affordable & Transparent Pricing",
+    desc: "Clear pricing with no hidden charges — pay only for the time and service you need.",
+    icon: "💳",
   },
   {
-    title: "24/7 Customer Support",
-    desc: "Our support team is always ready to assist you whenever needed.",
-    icon: "🛠️",
+    title: "24/7 Dedicated Support",
+    desc: "Our support team is always available to assist you before, during, and after your booking.",
+    icon: "📞",
   },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-linear-to-b from-white to-gray-100">
       <div className="w-9/10 md:w-8/10 mx-auto text-center">
-        
         <h2
           data-aos="fade-up"
           className="text-3xl md:text-4xl font-bold text-gray-900"
         >
-          Why Choose <span className="text-blue-600">BikeMart</span>
+          Why Choose <span className="text-blue-600">CareBridge</span>
         </h2>
 
         <p
@@ -38,11 +37,10 @@ export default function WhyChooseUs() {
           data-aos-delay="120"
           className="mt-4 text-gray-600 max-w-2xl mx-auto"
         >
-          We combine quality, affordability, and reliable service to give you
-          the best biking experience possible.
+          We are committed to making caregiving safe, simple, and accessible —
+          providing families with trusted support whenever they need it.
         </p>
 
-      
         <div className="grid gap-8 mt-12 md:grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
             <div
