@@ -79,7 +79,7 @@ This service is ideal for short-term recovery needs as well as long-term medical
 
   const handleBooking = () => {
     if (user?.email) {
-      router.push("/booking");
+      router.push(`/booking/${service_id}`);
     } else {
       router.push("/login");
     }

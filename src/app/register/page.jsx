@@ -61,19 +61,33 @@ export default function page() {
     return <Loader></Loader>;
   }
   return (
-    <div className="flex justify-center my-20">
+    <div className="flex items-center justify-center my-20">
       <div className="card bg-base-100 w-9/10 max-w-sm shrink-0 shadow-2xl py-5">
         <h1 className="text-center py-2 text-2xl font-semibold">
-          Register to Bike<span className="text-[#3863da]">Mart</span>{" "}
+          Register to Care<span className="text-[#3863da]">Bridge</span>{" "}
         </h1>
-        <div className="card-body">
+        <div className="card-body ">
           <form className="fieldset" onSubmit={handleRegister}>
+            <label className="label text-[17px]">NID No</label>
+            <input
+              type="number"
+              className="input focus:outline-none focus:border-blue-500"
+              placeholder="NID No"
+              name="nid"
+            />
             <label className="label text-[17px]">Username</label>
             <input
               type="text"
               className="input focus:outline-none focus:border-blue-500"
               placeholder="Username"
               name="name"
+            />
+            <label className="label text-[17px]">Phone No</label>
+            <input
+              type="number"
+              className="input focus:outline-none focus:border-blue-500"
+              placeholder="Phone No"
+              name="phone"
             />
             <label className="label text-[17px]">Email</label>
             <input

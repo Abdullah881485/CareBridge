@@ -9,7 +9,7 @@ export default function page() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://bikemart-server.vercel.app/products")
+    fetch("http://localhost:5000/bookings")
       .then((res) => {
         return res.json();
       })
@@ -31,7 +31,7 @@ export default function page() {
       {" "}
       <h1 className="text-2xl text-center font-semibold my-5">
         {" "}
-        Manage Bikes{" "}
+        My Bookings{" "}
       </h1>{" "}
       <div className="flex flex-col gap-5 w-8/10 mx-auto">
         {" "}
