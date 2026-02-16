@@ -1,4 +1,4 @@
-# BikeMart - Next.js Bike Marketplace
+<!-- # BikeMart - Next.js Bike Marketplace
 
 ## Project Description
 
@@ -47,4 +47,4 @@ npm run dev
 | `/products`             | List of all bikes with search/filter     | Public    |
 | `/products/[productId]` | Product details page                     | Public    |
 | `/add-product`          | Form to add a bike                       | Protected |
-| `/manage-products`      | Manage (view/delete) bikes               | Protected |
+| `/manage-products`      | Manage (view/delete) bikes               | Protected | -->
