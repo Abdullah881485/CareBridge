@@ -1,81 +1,54 @@
-// "use client";
-// import useAxios from "@/Hooks/useAxios";
-// import { useRouter } from "next/navigation";
-// import Swal from "sweetalert2";
+"use client";
 
-// export default function ListCard({ bike, bikes, setBikes }) {
-//   const axiosInstance = useAxios();
-//   const router = useRouter();
-//   const handleDelete = (bike_Id) => {
-//     Swal.fire({
-//       title: "Are you sure?",
-//       text: "You won't be able to revert this!",
-//       icon: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Yes, delete it!",
-//     }).then((result) => {
-//       if (result.isConfirmed) {
-//         axiosInstance.delete(`/products/${bike_Id}`).then((data) => {
-//           // console.log(data);
-//           if (data.data.deletedCount) {
-//             Swal.fire({
-//               title: "Deleted!",
-//               text: "Your transaction has been deleted.",
-//               icon: "success",
-//             });
+import { useRouter } from "next/navigation";
+import { Eye, Trash2, MapPin, Clock } from "lucide-react";
 
-//             const remaining = bikes.filter((card) => card._id !== bike_Id);
-//             setBikes(remaining);
-//           }
-//         });
-//       }
-//     });
-//   };
+export default function ListCard({ booking }) {
+  const router = useRouter();
 
-//   return (
-//     <div
-//       data-aos="fade-up"
-//       data-aos-anchor-placement="center-bottom"
-//       className="bg-white shadow-md rounded-lg overflow-hidden p-4 flex flex-col sm:flex-col md:flex-row justify-between items-start hover:shadow-lg transition gap-4 w-full"
-//     >
-//       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center w-full md:w-2/3">
-//         <img
-//           src={bike.image}
-//           alt={bike.bikeTitle}
-//           className="w-20 h-20 sm:w-24 sm:h-24 md:w-16 md:h-16 object-cover rounded flex-shrink-0"
-//         />
-//         <div className="flex flex-col gap-1 w-full">
-//           <h2 className="text-base sm:text-lg md:text-xl font-semibold">
-//             {bike.title}
-//           </h2>
-//           <p className="text-gray-600 text-sm sm:text-base md:text-base line-clamp-2">
-//             {bike.short_description}
-//           </p>
-//         </div>
-//       </div>
+  return (
+    <div className="group relative bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl px-3 py-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className=" space-y-2">
+          <h2 className="text-lg font-semibold text-gray-800 tracking-tight">
+            {booking?.name}
+          </h2>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 text-gray-500 text-sm">
+              <MapPin size={16} />
+              <span>{booking?.location}</span>
+            </div>
 
-//       <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 md:gap-6 items-start sm:items-center w-full sm:w-auto">
-//         <span className="font-bold text-blue-500 text-base sm:text-lg md:text-xl">
-//           ${bike.price}
-//         </span>
+            <div className="flex items-center gap-2 text-gray-500 text-sm">
+              <Clock size={16} />
+              <span>{booking?.duration} Hours</span>
+            </div>
+          </div>
+        </div>
 
-//         <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-//           <button
-//             className="w-full sm:w-auto px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition cursor-pointer"
-//             onClick={() => router.push(`/products/${bike._id}`)}
-//           >
-//             View
-//           </button>
-//           <button
-//             className="w-full sm:w-auto px-3 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition cursor-pointer"
-//             onClick={() => handleDelete(bike._id)}
-//           >
-//             Delete
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+        <div className="flex items-center gap-4">
+          <div className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-medium shadow-md">
+            ${booking?.totalCost}
+          </div>
+
+          <div className="flex gap-3">
+            <button
+              onClick={() => router.push(`/Services/${booking.id}`)}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-medium"
+            >
+              <Eye size={16} />
+              View
+            </button>
+
+            <button className="flex items-center gap-2 px-4 py-2 rounded-xl border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 text-sm font-medium">
+              <Trash2 size={16} />
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 rounded-2xl ring-1 ring-transparent group-hover:ring-blue-200 transition duration-300 pointer-events-none"></div>
+    </div>
+  );
+}

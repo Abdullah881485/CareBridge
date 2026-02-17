@@ -1,188 +1,187 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import useAxios from "@/Hooks/useAxios";
 import Swal from "sweetalert2";
 import Loader from "@/components/Loader/Loader";
 import useAuth from "@/Hooks/useAuth";
-import useAxios from "@/Hooks/useAxios";
 
 export default function BookingPage() {
-  // const router = useRouter();
-  const { serviceId } = useParams();
-  console.log(serviceId);
+  const { user } = useAuth();
+  // console.log(user);
 
-  // const { user } = useAuth(); // logged-in user
-  // const axiosInstance = useAxios();
-  // const [service, setService] = useState(null);
-  // const [duration, setDuration] = useState(1);
-  // const [division, setDivision] = useState("");
-  // const [district, setDistrict] = useState("");
-  // const [city, setCity] = useState("");
-  // const [area, setArea] = useState("");
-  // const [totalCost, setTotalCost] = useState(0);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const params = useParams();
+  const axiosInstance = useAxios();
+  const serviceId = params.service_id;
+
+  const [duration, setDuration] = useState(1);
 
   const services = [
     {
       id: "baby",
       name: "Baby Care",
       rate: 500,
-      description: "Reliable baby care at home",
-      image: "/babyCare.webp",
+      description:
+        "Professional baby care with trained caregivers ensuring safety, emotional bonding, and hygiene.",
+      image: "https://i.ibb.co.com/m5zpxT46/Pediatrics1.jpg",
     },
     {
       id: "elderly",
       name: "Elderly Service",
       rate: 600,
-      description: "Elderly care and companionship",
-      image: "/babyCare.webp",
+      description:
+        "Compassionate elderly care and companionship support at home.",
+      image: "https://i.ibb.co.com/d0fVK4DJ/R.jpg",
     },
     {
       id: "sick",
       name: "Sick People Service",
       rate: 700,
-      description: "Home care for sick patients",
-      image: "/babyCare.webp",
+      description: "Home-based medical assistance and recovery support.",
+      image: "https://i.ibb.co.com/xt686Xm3/OIP.webp",
     },
   ];
+  const service = services.find((s) => s.id === serviceId);
+  const handleAddBooking = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const form = e.target;
+    const duration = form.duration.value;
+    const location = form.location.value;
+    const name = service.name;
+    const id = service.id;
+    const email = user?.email;
+    const totalCost = services.find((s) => s.id === serviceId)?.rate * duration;
+    console.log(duration, location, totalCost);
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     Swal.fire({
-  //       icon: "warning",
-  //       title: "Login Required",
-  //       text: "You must log in to book a service.",
-  //       confirmButtonText: "Ok",
-  //     }).then(() => {
-  //       router.push("/login");
-  //     });
-  //   }
-  // }, [user, router]);
+    const newBooking = {
+      duration,
+      location,
+      name,
+      email,
+      id,
+      serviceId: serviceId,
+      totalCost: totalCost,
+    };
 
-  // // Load selected service
-  // useEffect(() => {
-  //   if (serviceId) {
-  //     const selected = services.find((s) => s.id === serviceId);
-  //     if (!selected) {
-  //       Swal.fire("Error", "Service not found!", "error").then(() =>
-  //         router.push("/"),
-  //       );
-  //     } else {
-  //       setService(selected);
-  //       setTotalCost(duration * selected.rate);
-  //     }
-  //   }
-  // }, [serviceId, duration, router]);
+    axiosInstance
+      .post("/booking", newBooking)
+      .then((data) => {
+        // console.log(data.data);
+        if (data.data) {
+          Swal.fire({
+            title: "",
+            text: "Your Booking added Successfully",
+            icon: "success",
+            confirmButtonText: "Close",
+          });
+          setLoading(false);
+          e.target.reset();
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding booking:", error);
+        setLoading(false);
+      });
 
-  // // Update total cost dynamically
-  // useEffect(() => {
-  //   if (service) setTotalCost(duration * service.rate);
-  // }, [duration, service]);
-
-  // const handleBooking = async () => {
-  //   if (!division || !district || !city || !area) {
-  //     Swal.fire("Error", "Please fill all location fields!", "error");
-  //     return;
-  //   }
-
-  //   setLoading(true);
-
-  //   const bookingData = {
-  //     userId: user.id,
-  //     serviceId: service.id,
-  //     serviceName: service.name,
-  //     duration,
-  //     location: { division, district, city, area },
-  //     totalCost,
-  //     status: "Pending",
-  //   };
-
-  //   try {
-  //     // Save booking (localStorage fallback if backend not ready)
-  //     // Replace with backend API if available:
-  //     // await axiosInstance.post("/bookings", bookingData);
-
-  //     let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-  //     bookings.push(bookingData);
-  //     localStorage.setItem("bookings", JSON.stringify(bookings));
-
-  //     Swal.fire(
-  //       "Success",
-  //       "Booking confirmed! Status: Pending",
-  //       "success",
-  //     ).then(() => {
-  //       router.push("/my-bookings");
-  //     });
-  //   } catch (error) {
-  //     console.error("Error creating booking:", error);
-  //     Swal.fire("Error", "Failed to create booking.", "error");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // if (!service) return <Loader />;
+    // console.log({ type, category, amount, description, date, email, name });
+  };
+  if (loading) {
+    return <Loader></Loader>;
+  }
 
   return (
-    // <div className="booking-page">
-    //   <h1>Book Service: {service.name}</h1>
-    //   <img src={service.image} alt={service.name} width="300" />
-    //   <p>{service.description}</p>
-    //   <p>Rate: {service.rate} BDT/hour</p>
+    <section className="relative min-h-screen flex items-center py-24 bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden">
+      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl opacity-20"></div>
 
-    //   <label>
-    //     Duration (hours):
-    //     <input
-    //       type="number"
-    //       min="1"
-    //       value={duration}
-    //       onChange={(e) => setDuration(parseInt(e.target.value))}
-    //     />
-    //   </label>
+      <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+        <div className="space-y-8">
+          <div className="overflow-hidden rounded-3xl shadow-2xl group">
+            <img
+              src={service?.image}
+              alt="service"
+              className="w-full h-96 object-cover group-hover:scale-105 transition duration-700"
+            />
+          </div>
 
-    //   <label>
-    //     Division:
-    //     <select value={division} onChange={(e) => setDivision(e.target.value)}>
-    //       <option value="">Select Division</option>
-    //       <option value="Dhaka">Dhaka</option>
-    //       <option value="Chattogram">Chattogram</option>
-    //       <option value="Khulna">Khulna</option>
-    //     </select>
-    //   </label>
+          <div>
+            <h1 className="text-5xl font-bold text-gray-800 mb-4 leading-tight">
+              {service?.name}
+            </h1>
 
-    //   <label>
-    //     District:
-    //     <input value={district} onChange={(e) => setDistrict(e.target.value)} />
-    //   </label>
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              {service?.description}
+            </p>
 
-    //   <label>
-    //     City:
-    //     <input value={city} onChange={(e) => setCity(e.target.value)} />
-    //   </label>
+            <div className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full text-xl font-semibold shadow-lg">
+              {service?.rate} BDT / Hour
+            </div>
+          </div>
+        </div>
 
-    //   <label>
-    //     Area / Address:
-    //     <input value={area} onChange={(e) => setArea(e.target.value)} />
-    //   </label>
+        <div className="bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-2xl border border-white/40 hover:shadow-blue-200 transition duration-500">
+          <div className="flex justify-between items-center">
+            <h2 className="text-3xl font-bold text-gray-800 mb-10">
+              Complete Your Booking
+            </h2>
+            <p
+              onClick={() => router.back()}
+              className="text-blue-600 hover:text-blue-800 cursor-pointer mb-10 font-semibold"
+            >
+              ← Back
+            </p>
+          </div>
 
-    //   <p>Total Cost: {totalCost} BDT</p>
+          <div>
+            <form className="space-y-7" onSubmit={handleAddBooking}>
+              <label className="block mb-2 font-semibold text-gray-700">
+                Service Duration
+              </label>
+              <select
+                name="duration"
+                defaultValue="1"
+                onChange={(e) => setDuration(e.target.value)}
+                className="w-full border border-gray-200 rounded-md  px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none transition"
+              >
+                <option value="1">1 Hour</option>
+                <option value="2">2 Hours</option>
+                <option value="3">3 Hours</option>
+              </select>
 
-    //   <button onClick={handleBooking} disabled={loading}>
-    //     {loading ? "Booking..." : "Confirm Booking"}
-    //   </button>
-    // </div>
-    <div className="text-center py-20">
-      {serviceId && (
-        <p className="text-blue-600 font-semibold">
-          Selected Service ID: {serviceId}
-        </p>
-      )}
-      <h2 className="text-2xl font-bold">Booking Page</h2>
-      <p className="text-gray-600 mt-4">
-        This is a placeholder for the booking page. Booking functionality will
-        be implemented soon.
-      </p>
-    </div>
+              <label className="block mb-2 font-semibold text-gray-700">
+                Select Location
+              </label>
+              <select
+                name="location"
+                defaultValue="Dhaka"
+                className="w-full border border-gray-200 rounded-md  px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none transition"
+              >
+                <option>Dhaka</option>
+                <option>Chattogram</option>
+                <option>Khulna</option>
+              </select>
+
+              <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-6 rounded-md  flex justify-between items-center text-lg font-semibold">
+                <span>Total Cost</span>
+                <span className="text-blue-600 text-xl">
+                  {service?.rate * duration} BDT
+                </span>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-2 rounded-md text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:scale-[1.03] hover:shadow-xl transition duration-300"
+              >
+                Confirm Booking
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

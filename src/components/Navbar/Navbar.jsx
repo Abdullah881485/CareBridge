@@ -19,7 +19,7 @@ export default function Navbar() {
       </li>
       {user?.email && (
         <li className="px-2">
-          <Link href="/manageProducts">My Bookings</Link>
+          <Link href="/myBookings">My Bookings</Link>
         </li>
       )}
 
